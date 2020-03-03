@@ -1,0 +1,8 @@
+paho-mqtt 1.2
+
+Copyright (c) Roger Light
+
+paho-mqtt distributed under the terms of Eclipse Public License v1.0 / Eclipse Distribution License v1.0
+
+
+
