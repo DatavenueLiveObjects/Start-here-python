@@ -41,7 +41,7 @@ This sample contains 3 files :
 
 ## License
 
-Copyright (c) 2015 — 2016 Orange
+Copyright (c) 2015 — 2020 Orange
 
 This code is released under the BSD3 license. See the `LICENSE` file for more information.
 

@@ -1,5 +1,5 @@
 """
-Copyright (C) 2016 Orange
+Copyright (C) 2016-2020 Orange
 
 This software is distributed under the terms and conditions of the 'BSD 3'
 license which can be found in the file 'LICENSE.txt' in this package distribution 
@@ -7,6 +7,7 @@ license which can be found in the file 'LICENSE.txt' in this package distributio
 
 import paho.mqtt.client as mqtt
 import re
+import ssl
 
 class LoMqttClient(mqtt.Client):
     def __init__(self, server, port, apiKey, client_id="", clean_session=True, userdata=None, protocol=mqtt.MQTTv31):
@@ -16,7 +17,9 @@ class LoMqttClient(mqtt.Client):
         self.apiKey = apiKey
         mqtt.Client.username_pw_set(self, username="application", password=self.apiKey)
         self._subTopics = {}
-        
+        mqtt.Client.tls_set(self, ca_certs=None, certfile=None, keyfile=None, cert_reqs=ssl.CERT_REQUIRED,
+                tls_version=ssl.PROTOCOL_TLS, ciphers=None)
+
     def connect(self):
         print("MQTT connect "+str(self.server)+" "+str(self.port)+" "+str(self.apiKey))
         return mqtt.Client.connect(self, self.server, self.port, 10)    
